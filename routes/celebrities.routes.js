@@ -19,14 +19,14 @@ router.post('/create', async (req, res, next) => {
         res.redirect('/celebrities');
     } catch (error) {
         next(error);
-        res.render('/celebrities/new-celebrity');
+        res.render('celebrities/new-celebrity');
     }
 })
 
 router.get('/', async (req, res, next) => {
     try {
         const celebrities = await Celebrity.find();
-        res.render('/celebrities/celebrities', { celebrities });
+        res.render('celebrities/celebrities', { celebrities });
     } catch(error) {
         next(error);
     }
