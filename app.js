@@ -13,7 +13,7 @@ const express = require('express');
 // https://www.npmjs.com/package/hbs
 const hbs = require('hbs');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+// const MongoStore = require('connect-mongo');
 
 const app = express();
 
@@ -26,27 +26,27 @@ const capitalized = string => string[0].toUpperCase() + string.slice(1).toLowerC
 
 app.locals.title = `${capitalized(projectName)}- Generated with Ironlauncher`;
 
-app.use(
-    session({
-      secret: '123secret',
-      resave: true,
-      saveUninitialized: true,
-      cookie: {
-        maxAge: 600000
-      }, // ADDED code below !!!
-      store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/expressApp'
-      })
-    })
-  );
+// app.use(
+//     session({
+//       secret: '123secret',
+//       resave: true,
+//       saveUninitialized: true,
+//       cookie: {
+//         maxAge: 600000
+//       }, // ADDED code below !!!
+//       store: MongoStore.create({
+//         mongoUrl: 'mongodb://localhost/expressApp'
+//       })
+//     })
+//   );
   
   
-  app.use(function (req, res, next) {
-    // im making a template variable called theUser and imequalling it to 
-    // the user object in the session
-    res.locals.theUser = req.session.currentlyLoggedIn;
-    next();
-  })
+  // app.use(function (req, res, next) {
+  //   // im making a template variable called theUser and imequalling it to 
+  //   // the user object in the session
+  //   res.locals.theUser = req.session.currentlyLoggedIn;
+  //   next();
+  // })
 
 // 👇 Start handling routes here
 const index = require('./routes/index');
